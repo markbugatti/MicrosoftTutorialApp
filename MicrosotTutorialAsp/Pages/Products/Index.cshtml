@@ -1,0 +1,71 @@
+﻿@page
+@model MicrosotTutorialAsp.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form>
+    <p>
+        <select asp-for="ProductName" asp-items="Model.Names">
+            <option value="">Всі</option>
+        </select>
+        Тип продукту: <input type="text" asp-for="SearchString"/>
+        <input type="submit" value="Фільтр"/>
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].ProduceDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].ProduceTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product[0].Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Product) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProduceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProduceTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

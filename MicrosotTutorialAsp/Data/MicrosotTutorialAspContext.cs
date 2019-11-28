@@ -15,5 +15,7 @@ namespace MicrosotTutorialAsp.Data
         }
 
         public DbSet<MicrosotTutorialAsp.Models.Movie> Movie { get; set; }
+
+        public DbSet<MicrosotTutorialAsp.Models.Product> Product { get; set; }
     }
 }

@@ -10,8 +10,8 @@ using MicrosotTutorialAsp.Data;
 namespace MicrosotTutorialAsp.Migrations
 {
     [DbContext(typeof(MicrosotTutorialAspContext))]
-    [Migration("20191024083820_InicialCreate")]
-    partial class InicialCreate
+    [Migration("20191123073702_AddProduct")]
+    partial class AddProduct
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,6 +43,33 @@ namespace MicrosotTutorialAsp.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Movie");
+                });
+
+            modelBuilder.Entity("MicrosotTutorialAsp.Models.Product", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("ProduceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ProduceTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Product");
                 });
 #pragma warning restore 612, 618
         }

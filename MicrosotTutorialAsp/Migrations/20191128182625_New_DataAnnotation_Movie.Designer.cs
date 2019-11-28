@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MicrosotTutorialAsp.Data;
 
 namespace MicrosotTutorialAsp.Migrations
 {
     [DbContext(typeof(MicrosotTutorialAspContext))]
-    partial class MicrosotTutorialAspContextModelSnapshot : ModelSnapshot
+    [Migration("20191128182625_New_DataAnnotation_Movie")]
+    partial class New_DataAnnotation_Movie
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
