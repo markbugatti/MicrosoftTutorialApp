@@ -27,8 +27,18 @@ namespace MicrosotTutorialAsp
         {
             services.AddRazorPages();
 
-            services.AddDbContext<MicrosotTutorialAspContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("MicrosotTutorialAspContext")));
+
+            /*publish to Azure*/
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+                services.AddDbContext<MicrosotTutorialAspContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+            else
+                /*Local developement*/
+                services.AddDbContext<MicrosotTutorialAspContext>(options =>
+                        options.UseSqlServer(Configuration.GetConnectionString("MicrosotTutorialAspContext")));
+
+            // Automaticaly perform database migration
+            services.BuildServiceProvider().GetService<MicrosotTutorialAspContext>().Database.Migrate();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
